@@ -17,7 +17,7 @@ const HeroSection = () => {
           pantry staples, we’ve got you covered every day!
         </p>
         <div>
-          <Image src={heroImg} className="w-[100%] md:w-[100%] mx-auto h-full"></Image>
+          <Image src={heroImg} alt="hero-image" className="w-[100%] md:w-[100%] mx-auto h-full"></Image>
         </div>
       </div>
 

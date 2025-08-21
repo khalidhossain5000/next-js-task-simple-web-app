@@ -1,9 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+
+
 import "./globals.css";
 
 import NavBar from "./Components/NavBar";
 import { Sora } from 'next/font/google'
 import Footer from "./Components/Footer";
+import SessionWrapper from "./Components/SessionWrapper";
 const sora = Sora({
   subsets: ['latin'],
   display: 'swap',          
@@ -18,6 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
+      <SessionWrapper>
       <body
         className={`${sora.className} antialiased`}
       >
@@ -25,6 +28,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer/>
       </body>
+      </SessionWrapper>
     </html>
   );
 }

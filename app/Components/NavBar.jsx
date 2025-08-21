@@ -63,12 +63,14 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 text-xl">{links}</ul>
         </div>
         <div className="navbar-end space-x-6">
-          <button className="hidden md:block py-[10px] px-[30px] border-1 border-[#179800] rounded-lg text-xl">
+          <Link href={'/Login'} className="cursor-pointer">
+          <button className="cursor-pointer hidden md:block py-[10px] px-[30px] border-1 border-[#179800] rounded-lg text-xl">
             Login
           </button>
-          <button className="hidden md:block py-[10px] px-[30px] text-white bg-[#179800] rounded-lg text-xl">
+          </Link>
+          <Link href={'/register'} className="cursor-pointer"><button className="cursor-pointer hidden md:block py-[10px] px-[30px] text-white bg-[#179800] rounded-lg text-xl">
             Register
-          </button>
+          </button></Link>
 
           <div className="md:hidden">
             <Link href="/">

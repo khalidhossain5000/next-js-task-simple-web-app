@@ -26,7 +26,7 @@ const ProductHiglights = () => {
             {/* card-1 */}
             <div className="bg-[#efebe3] flex flex-col lg:flex-row items-center gap-3 rounded-xl p-3">
               <div className="imgs">
-                <Image src={p1} className="w-24"></Image>
+                <Image src={p1} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -39,7 +39,7 @@ const ProductHiglights = () => {
             {/* card-2*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="pro-image" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -52,7 +52,7 @@ const ProductHiglights = () => {
             {/* card-3*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -66,7 +66,7 @@ const ProductHiglights = () => {
             {/* card-4*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -94,7 +94,7 @@ const ProductHiglights = () => {
             {/* card-6*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -108,7 +108,7 @@ const ProductHiglights = () => {
             {/* card-7*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -122,7 +122,7 @@ const ProductHiglights = () => {
             {/* card-8*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
@@ -136,7 +136,7 @@ const ProductHiglights = () => {
             {/* card-9*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="product-img" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>

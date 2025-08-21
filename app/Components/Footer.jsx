@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="bg-[#179800] py-12 md:py-24">
       <div className="container mx-auto flex items-center flex-col lg:flex-row justify-between lg:px-3 xl:px-0">
         <div className="">
-          <Image src={footerlogo} className="w-24 mx-auto lg:mx-0"></Image>
+          <Image src={footerlogo} alt="footer-logo" className="w-24 mx-auto lg:mx-0"></Image>
           <p className="lg:text-xl text-white lg:w-9/12 pt-3 md:py-4 lg:pt-6 text-center lg:text-left">
             Discover a world of treats, toys, and essentials handpicked for your
             furry friends
