@@ -1,7 +1,8 @@
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
-import CredentialsProvider from "next-auth/providers/credentials"
-
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+import clientPromise from "../../../../lib/mongodb"; // ঠিক path অনুযায়ী adjust করো
+import bcrypt from "bcryptjs"; 
 export const authOptions = {
   providers: [
     // Google login
@@ -18,17 +19,28 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // **Demo purpose:** hardcoded check
-        if (credentials.email === "admin@example.com" && credentials.password === "123456") {
-          return { id: 1, name: "Admin", email: "admin@example.com" }
-        }
-        return null
-      }
-    })
+        const client = await clientPromise; // mongodb.js থেকে import করা MongoClient
+        const db = client.db("nextauth-db"); // তোমার DB নাম
+
+        const user = await db
+          .collection("users")
+          .findOne({ email: credentials.email });
+
+        if (!user) throw new Error("No user found");
+
+        // Simple password check (bcrypt হলে আলাদা হবে)
+        // const isValid = credentials.password === user.password;
+        const isValid = await bcrypt.compare(credentials.password, user.password);
+
+        if (!isValid) throw new Error("Incorrect password");
+
+        return { id: user._id, name: user.name, email: user.email };
+      },
+    }),
   ],
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
-}
+};
 
-const handler = NextAuth(authOptions)
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

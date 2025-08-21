@@ -1,49 +1,85 @@
-"use client"
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Swal from 'sweetalert2';
+"use client";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
-
+import { signIn } from "next-auth/react";
 
 const Page = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-const [loading, setLoading] = useState(false);
-const handleRegister = async (e) => {
-  e.preventDefault();
+  const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
     setLoading(true);
-  try {
-    const res = await fetch("/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
-    const data = await res.json();
-
-   if (res.ok) {
-      // SweetAlert Success
-      Swal.fire({
-        icon: "success",
-        title: "Registered!",
-        text: data.message,
-        confirmButtonColor: "#179800",
-      }).then(() => {
-        router.push("/"); 
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
       });
-    } else {
-      alert(data.message);
-    }
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong!");
-  }finally {
-    setLoading(false);
-  }
-};
+      const data = await res.json();
 
+      if (res.ok) {
+        await signIn("credentials", {
+          redirect: true,
+          email,
+          password,
+          callbackUrl: "/",
+        });
+        Swal.fire({
+          icon: "success",
+          title: "Registered & Logged in!",
+          confirmButtonColor: "#179800",
+        });
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoadingGoogle(true);
+      await signIn("google", { callbackUrl: "/" });
+      if (res?.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Register Successful!",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(async () => {
+          // Register হয়ে গেলে সঙ্গে সঙ্গে login
+          await signIn("credentials", {
+            redirect: true, // true হলে callbackUrl এ পাঠাবে
+            email,
+            password,
+            callbackUrl: "/", // success হলে home page
+          });
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Please try again!",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingGoogle(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EFEBE3]">
@@ -85,16 +121,21 @@ const handleRegister = async (e) => {
           </button>
         </form>
 
-<button
-  type="button"
-  onClick={() => signIn("google")}
-  className="mt-3 w-full p-3 bg-white border rounded-lg flex items-center justify-center gap-2 text-lg"
->
-  <FcGoogle size={24} />
-  Continue with Google
-</button>
-
-
+        <button
+          type="button"
+          onClick={handleGoogleLogin}
+          className="mt-3 w-full p-3 bg-white border rounded-lg flex items-center justify-center gap-2 text-lg"
+          disabled={loadingGoogle}
+        >
+          {loadingGoogle ? (
+            "Signing in..."
+          ) : (
+            <>
+              <FcGoogle size={24} />
+              Continue with Google
+            </>
+          )}
+        </button>
 
         <p className="text-center text-[#111111] mt-4">
           Already have an account?{" "}

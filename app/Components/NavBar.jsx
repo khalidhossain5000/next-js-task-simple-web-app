@@ -1,7 +1,10 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import logo from "../../assets/logo-header.png";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
+
 const NavBar = () => {
   const links = (
     <>
@@ -16,6 +19,9 @@ const NavBar = () => {
       </li>
     </>
   );
+
+  const { data: session, status } = useSession();
+
   return (
     <div className=" bg-[#EFEBE3] ">
       <div className="container mx-auto navbar">
@@ -45,11 +51,11 @@ const NavBar = () => {
               {links}
               <div className="flex flex-col gap-3">
                 <button className=" py-1 px-5 border-1 border-[#179800] rounded-sm text-sm">
-            Login
-          </button>
-          <button className="py-1 px-5 text-white bg-[#179800] rounded-sm text-sm">
-            Register
-          </button>
+                  Login
+                </button>
+                <button className="py-1 px-5 text-white bg-[#179800] rounded-sm text-sm">
+                  Register
+                </button>
               </div>
             </ul>
           </div>
@@ -63,14 +69,35 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 text-xl">{links}</ul>
         </div>
         <div className="navbar-end space-x-6">
-          <Link href={'/Login'} className="cursor-pointer">
-          <button className="cursor-pointer hidden md:block py-[10px] px-[30px] border-1 border-[#179800] rounded-lg text-xl">
-            Login
-          </button>
-          </Link>
-          <Link href={'/register'} className="cursor-pointer"><button className="cursor-pointer hidden md:block py-[10px] px-[30px] text-white bg-[#179800] rounded-lg text-xl">
-            Register
-          </button></Link>
+          {status === "loading" ? (
+            <p>Loading...</p>
+          ) : session ? (
+            <>
+              <span className="text-[#111111] font-semibold">
+                {session.user.name}
+              </span>
+
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="px-3 py-1 bg-[#179800] text-white rounded-lg cursor-pointer"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <div className="flex gap-6">
+              <Link href={"/Login"} className="cursor-pointer">
+                <button className="cursor-pointer hidden md:block py-[10px] px-[30px] border-1 border-[#179800] rounded-lg text-xl">
+                  Login
+                </button>
+              </Link>
+              <Link href={"/register"} className="cursor-pointer">
+                <button className="cursor-pointer hidden md:block py-[10px] px-[30px] text-white bg-[#179800] rounded-lg text-xl">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
 
           <div className="md:hidden">
             <Link href="/">

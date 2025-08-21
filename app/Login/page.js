@@ -3,31 +3,72 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
-import React from "react";
+import Swal from "sweetalert2";
+import Link from "next/link";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
   const router = useRouter();
 
+  // Credentials login
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-    if (result.ok) {
-      router.push("/products"); // login success → redirect
-    } else {
-      alert("Invalid credentials");
+    setLoading(true);
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          router.push("/"); // login success → redirect
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: result.error || "Invalid credentials",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong",
+        text: error.message || "Try again later",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Google login
   const handleGoogleSignIn = async () => {
-    await signIn("google", { callbackUrl: "/products" });
+    setLoadingGoogle(true);
+    try {
+      await signIn("google", { callbackUrl: "/" });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Google Login Failed",
+        text: "Please try again!",
+      });
+    } finally {
+      setLoadingGoogle(false);
+    }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EFEBE3]">
       <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
@@ -56,8 +97,9 @@ const Login = () => {
           <button
             type="submit"
             className="w-full py-3 rounded-lg bg-[#179800] text-white font-semibold text-lg"
+            disabled={loading}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
@@ -67,15 +109,16 @@ const Login = () => {
         <button
           onClick={handleGoogleSignIn}
           className="w-full py-3 rounded-lg border border-[#179800] text-[#179800] font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#179800] hover:text-white transition"
+          disabled={loadingGoogle}
         >
-          Sign in with Google
+          {loadingGoogle ? "Signing in..." : "Sign in with Google"}
         </button>
 
         <p className="text-center text-[#111111] mt-4">
           Don’t have an account?{" "}
-          <a href="/register" className="text-[#179800] font-semibold">
+          <Link href="/register" className="text-[#179800] font-semibold">
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
@@ -83,6 +126,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
