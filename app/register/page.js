@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Swal from 'sweetalert2';
+import { FcGoogle } from "react-icons/fc";
 
 
 const Page = () => {
@@ -78,11 +79,22 @@ const handleRegister = async (e) => {
           />
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-[#179800] text-white font-semibold text-lg"
+            className="cursor-pointer w-full py-3 rounded-lg bg-[#179800] text-white font-semibold text-lg"
           >
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
+
+<button
+  type="button"
+  onClick={() => signIn("google")}
+  className="mt-3 w-full p-3 bg-white border rounded-lg flex items-center justify-center gap-2 text-lg"
+>
+  <FcGoogle size={24} />
+  Continue with Google
+</button>
+
+
 
         <p className="text-center text-[#111111] mt-4">
           Already have an account?{" "}

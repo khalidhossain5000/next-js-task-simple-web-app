@@ -7,7 +7,7 @@ export const authOptions = {
     // Google login
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRETS,
     }),
 
     // Credentials login
