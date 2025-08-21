@@ -2,22 +2,47 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Swal from 'sweetalert2';
+
 
 const Page = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+const [loading, setLoading] = useState(false);
+const handleRegister = async (e) => {
+  e.preventDefault();
+    setLoading(true);
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    });
+    const data = await res.json();
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    
-    // এখন আমরা শুধু console.log করব, পরবর্তীতে MongoDB integration হবে
-    console.log({ name, email, password });
-    
-    // success হলে redirect
-    router.push("/products");
+   if (res.ok) {
+      // SweetAlert Success
+      Swal.fire({
+        icon: "success",
+        title: "Registered!",
+        text: data.message,
+        confirmButtonColor: "#179800",
+      }).then(() => {
+        router.push("/"); 
+      });
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong!");
+  }finally {
+    setLoading(false);
   }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EFEBE3]">
@@ -55,7 +80,7 @@ const Page = () => {
             type="submit"
             className="w-full py-3 rounded-lg bg-[#179800] text-white font-semibold text-lg"
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
         </form>
 

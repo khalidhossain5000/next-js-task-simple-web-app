@@ -80,7 +80,7 @@ const ProductHiglights = () => {
             {/* card-5*/}
             <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
               <div className="imgs">
-                <Image src={p2} className="w-24"></Image>
+                <Image src={p2} alt="p-image" className="w-24"></Image>
               </div>
               <div className="contensts space-y-1">
                 <h3 className="text-black font-medium text-xl">Onion</h3>
