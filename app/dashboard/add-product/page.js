@@ -19,40 +19,10 @@ const { data: session, status } = useSession();
 const router = useRouter();
 
 useEffect(() => {
-  if (status === "loading") return; // session লোড হচ্ছে, তখন কিছু না করা
-  if (!session) {
-    router.push("/Login"); // লগ ইন না থাকলে redirect
+  if (status === "unauthenticated") {
+    router.push("/Login"); // logged-out হলে redirect
   }
-}, [session, status, router]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}, [status, router]);
 
 
 
@@ -123,14 +93,14 @@ useEffect(() => {
 
 
 
-  // এখানে add করো:
-  if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>Loading...</p>
-      </div>
-    );
-  }
+
+ if (status === "loading" || status === "unauthenticated") {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <p>Loading...</p>
+    </div>
+  );
+}
 
 
 
