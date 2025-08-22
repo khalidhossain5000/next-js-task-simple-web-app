@@ -24,11 +24,11 @@ const Footer = () => {
            
             </li>
             <li>
-              <Link href={"/"}>Home</Link>
+              <Link href={"/products"}>Product</Link>
            
             </li>
             <li>
-              <Link href={"/"}>Home</Link>
+              <Link href={"/dashboard/add-product"}>Add Product</Link>
            
             </li>
           </ul>
