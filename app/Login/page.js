@@ -31,7 +31,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          router.push("/"); // login success → redirect
+          router.push("/products"); // login success → redirect
         });
       } else {
         Swal.fire({
@@ -56,7 +56,7 @@ const Login = () => {
   const handleGoogleSignIn = async () => {
     setLoadingGoogle(true);
     try {
-      await signIn("google", { callbackUrl: "/" });
+      await signIn("google", { callbackUrl: "/products" });
     } catch (error) {
       console.error(error);
       Swal.fire({

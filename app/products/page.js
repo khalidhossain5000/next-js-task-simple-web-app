@@ -31,7 +31,7 @@ const page = () => {
             <p className="text-green-600 font-bold">${product.price}</p>
              {/* Details Button */}
             <Link
-              href={`/productList/${product.id}`}
+              href={`/products/${product.id}`}
               
               className="mt-2 inline-block w-full text-center py-2 rounded-lg bg-[#179800] text-white font-semibold hover:bg-green-700 transition"
             >

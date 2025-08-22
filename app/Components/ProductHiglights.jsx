@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import p1 from "../../assets/onion.png";
-import p2 from "../../assets/tomato.png";
+
+import products from "./productHighlightsData";
+import Link from "next/link";
 const ProductHiglights = () => {
   return (
     <div className="bg-[#ffffff] py-12 lg:py-24">
@@ -13,143 +14,36 @@ const ProductHiglights = () => {
         <div className="flex flex-col md:flex-row  gap-6 ">
           <div className=" left-card bg-gradient-to-br from-[#53DB3A]  to-[#ffffff] rounded-lg p-3 lg:p-5">
             <div className="pt-12">
-                <h3 className="text-white font-bold text-xl md:text-3xl">30% Off</h3>
-            <p className="text-[#111111]  py-3">
-              Discover a world of treats, toys, and essentials handpicked for{" "}
-            </p>
-            <button className="  py-[10px] px-[30px] text-black bg-[#ffffff] rounded-lg text-xl">
-              Buy Now
-            </button>
+              <h3 className="text-white font-bold text-xl md:text-3xl">
+                30% Off
+              </h3>
+              <p className="text-[#111111]  py-3">
+                Discover a world of treats, toys, and essentials handpicked for{" "}
+              </p>
+              <button className="  py-[10px] px-[30px] text-black bg-[#ffffff] rounded-lg text-xl">
+                Buy Now
+              </button>
             </div>
           </div>
           <div className="right-cards grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {/* card-1 */}
-            <div className="bg-[#efebe3] flex flex-col lg:flex-row items-center gap-3 rounded-xl p-3">
-              <div className="imgs">
-                <Image src={p1} alt="product-img" className="w-24"></Image>
+            {products.map((product) => (
+              <div 
+              key={product.id}
+              className="bg-[#efebe3] flex items-center gap-3 rounded-xl p-3">
+                <div className="imgs">
+                  <Image src={product.image} alt="product-img" className="w-24"></Image>
+                </div>
+                <div className="contensts space-y-1">
+                  <h3 className="text-black font-medium text-xl">{product.name}</h3>
+                  <h5 className="text-black font-medium">{product.price}</h5>
+                  <Link href={`/products/${product.id}`}><button className="cursor-pointer  py-2 px-5 text-white bg-[#179800] rounded-lg ">
+                    See More
+                  </button></Link>
+                </div>
               </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-1 px-5 lg:px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-            {/* card-2*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="pro-image" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-            {/* card-3*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg ">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-4*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-5*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="p-image" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-6*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-7*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-8*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
-
-            {/* card-9*/}
-            <div className="bg-[#efebe3] flex items-center gap-3 rounded-xl">
-              <div className="imgs">
-                <Image src={p2} alt="product-img" className="w-24"></Image>
-              </div>
-              <div className="contensts space-y-1">
-                <h3 className="text-black font-medium text-xl">Onion</h3>
-                <h5 className="text-black font-medium">$399.99</h5>
-                <button className="  py-2 px-6 text-white bg-[#179800] rounded-lg lg:text-xl">
-                  See More
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-
-
       </div>
     </div>
   );

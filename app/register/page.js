@@ -30,7 +30,7 @@ const Page = () => {
           redirect: true,
           email,
           password,
-          callbackUrl: "/",
+          callbackUrl: "/products",
         });
         Swal.fire({
           icon: "success",
@@ -51,7 +51,7 @@ const Page = () => {
   const handleGoogleLogin = async () => {
     try {
       setLoadingGoogle(true);
-      await signIn("google", { callbackUrl: "/" });
+      await signIn("google", { callbackUrl: "/products" });
       if (res?.ok) {
         Swal.fire({
           icon: "success",

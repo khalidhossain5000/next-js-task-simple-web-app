@@ -41,7 +41,6 @@ const page = ({ params }) => {
               </p>
               <p className="text-[#111111] mt-4">{product.description}</p>
             </div>
-
           </div>
         </div>
       </div>
