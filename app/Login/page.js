@@ -108,7 +108,7 @@ const Login = () => {
         {/* Google Login */}
         <button
           onClick={handleGoogleSignIn}
-          className="w-full py-3 rounded-lg border border-[#179800] text-[#179800] font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#179800] hover:text-white transition"
+          className="cursor-pointer w-full py-3 rounded-lg border border-[#179800] text-[#179800] font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#179800] hover:text-white transition"
           disabled={loadingGoogle}
         >
           {loadingGoogle ? "Signing in..." : "Sign in with Google"}
