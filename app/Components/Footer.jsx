@@ -38,25 +38,28 @@ const Footer = () => {
           <h2 className="lg:text-xl text-white text-center lg:text-left pt-6">Follow Us</h2>
           <div className="flex items-center gap-6 text-2xl text-white pt-3">
 <a 
-        href="https://www.facebook.com/yourpage" 
+        href="https://www.facebook.com" 
         target="_blank" 
         rel="noopener noreferrer"
+        className="cursor-pointer"
       >
         <FaFacebook />
       </a>
 
       <a 
-        href="https://www.instagram.com/yourprofile" 
+        href="https://www.instagram.com" 
         target="_blank" 
         rel="noopener noreferrer"
+        className="cursor-pointer"
       >
         <FaInstagram />
       </a>
 
       <a 
-        href="https://www.linkedin.com/in/yourprofile" 
+        href="https://www.linkedin.com" 
         target="_blank" 
         rel="noopener noreferrer"
+        className="cursor-pointer"
       >
         <FaLinkedin />
       </a>
