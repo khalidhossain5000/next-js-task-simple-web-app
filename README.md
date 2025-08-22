@@ -37,8 +37,6 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 MONGODB_URI=your_mongodb_connection_string
 
 ```
-
-
 4.Run the development server  
 
 ```bash
@@ -52,9 +50,6 @@ npm run dev
 http://localhost:3000
 
 ```
-
-
-
 
 
 ## Route Summary
