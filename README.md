@@ -63,3 +63,8 @@ http://localhost:3000
 | `/api/auth/[...nextauth]` | All | NextAuth authentication routes | N/A |
 
 **Note:** Protected routes require users to be logged in. Unauthenticated users will be redirected to `/login`.
+
+
+
+
+### All Rights Reserved 
