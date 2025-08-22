@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import clientPromise from "../../../../lib/mongodb"; // ঠিক path অনুযায়ী adjust করো
+import clientPromise from "../../../../lib/mongodb"; 
 import bcrypt from "bcryptjs"; 
 export const authOptions = {
   providers: [
