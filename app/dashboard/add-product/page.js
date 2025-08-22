@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import Swal from "sweetalert2";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation"; // router import
 
 const Page = () => {
   const [name, setName] = useState("");
@@ -8,6 +10,54 @@ const Page = () => {
   const [description, setDescription] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [loading, setLoading] = useState(false);
+
+
+
+
+
+const { data: session, status } = useSession();
+const router = useRouter();
+
+useEffect(() => {
+  if (status === "loading") return; // session লোড হচ্ছে, তখন কিছু না করা
+  if (!session) {
+    router.push("/Login"); // লগ ইন না থাকলে redirect
+  }
+}, [session, status, router]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +114,36 @@ const Page = () => {
       setLoading(false);
     }
   };
+
+
+
+
+
+
+
+
+
+  // এখানে add করো:
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen bg-[#EFEBE3] flex items-center justify-center p-6">
