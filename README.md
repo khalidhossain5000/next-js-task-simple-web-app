@@ -3,6 +3,12 @@
 
 Simple Vegetable Shop is a Next.js web app that allows authenticated users to add and manage products. It features secure Google login, responsive UI with Tailwind CSS, and MongoDB integration for product storage. Protected routes ensure only logged-in users can access product management pages.
 
+
+## Live Demo
+
+Check out the live project here: [Simple Vegetable Shop](https://next-js-task-simple-web-app.vercel.app/)
+
+
 ## Setup & installation instructions
 
 
