@@ -44,7 +44,7 @@ npm run dev
 
 ```
 
-5.Open in browser
+5.Open in browser with this 
 
 ```bash
 http://localhost:3000
