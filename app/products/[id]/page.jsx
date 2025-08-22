@@ -16,35 +16,42 @@ const page = ({ params }) => {
     );
   }
   return (
-    <div>
-      <div className="min-h-screen bg-[#EFEBE3] py-10">
-        <div className="container mx-auto flex flex-col lg:flex-row gap-10 bg-white rounded-lg shadow-lg p-6">
-          {/* Product Image */}
-          <div className="flex-1 flex justify-center items-center">
-            <Image
-              src={product.image.src}
-              alt={product.name}
-              width={100}
-              height={200}
-              className="rounded-lg"
-            />
-          </div>
+  <div>
+    <div className="min-h-screen bg-[#EFEBE3] flex items-center justify-center p-6">
+  <div className="flex flex-col lg:flex-row gap-8 bg-white rounded-xl shadow-md p-8 max-w-6xl w-full">
+    {/* Product Image */}
+    <div className="flex-1 flex justify-center items-center">
+      <Image
+        src={product.image.src}
+        alt={product.name}
+        width={100}      // ছোট কিন্তু quality ঠিক রাখার জন্য
+        height={100}
+        className="rounded-lg object-contain"
+      />
+    </div>
 
-          {/* Product Details */}
-          <div className="flex-1 flex flex-col justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-[#111111]">
-                {product.name}
-              </h1>
-              <p className="text-xl font-semibold text-[#179800] mt-2">
-                ৳ {product.price}
-              </p>
-              <p className="text-[#111111] mt-4">{product.description}</p>
-            </div>
-          </div>
-        </div>
+    {/* Product Details */}
+    <div className="flex-1 flex flex-col justify-center space-y-4">
+      <div className="flex flex-col md:flex-row items-center gap-3">
+        <p className="text-[#111111] font-semibold">Name:</p>
+        <h1 className="text-xl font-bold text-[#111111]">{product.name}</h1>
+      </div>
+
+      <div>
+        <p className="text-[#111111] font-semibold">Price:</p>
+        <p className="text-xl font-semibold text-[#179800]">৳ {product.price}</p>
+      </div>
+
+      <div>
+        <p className="text-[#111111] font-semibold">Description:</p>
+        <p className="text-[#111111]">{product.description}</p>
       </div>
     </div>
+  </div>
+</div>
+
+  </div>
+
   );
 };
 
