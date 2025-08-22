@@ -6,7 +6,8 @@ Simple Vegetable Shop is a Next.js web app that allows authenticated users to ad
 
 ## Live Demo
 
-Check out the live project here: [Simple Vegetable Shop](https://next-js-task-simple-web-app.vercel.app/)
+https://next-js-task-simple-web-app.vercel.app/
+
 
 
 ## Setup & installation instructions
