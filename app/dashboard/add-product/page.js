@@ -116,16 +116,16 @@ useEffect(() => {
 
 
   return (
-    <div className="min-h-screen bg-[#EFEBE3] flex items-center justify-center p-6">
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-[#111111] mb-6 text-center">
+    <div className="min-h-screen bg-[#EFEBE3] dark:bg-dark-secondary flex items-center justify-center p-6">
+      <div className="w-full max-w-lg bg-white dark:bg-dark-primary rounded-2xl shadow-lg p-8">
+        <h2 className="text-2xl font-bold text-[#111111] dark:text-dark-text mb-6 text-center">
           Add New Product
         </h2>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-[#111111] mb-1">
+            <label className="block text-sm font-medium text-[#111111] dark:text-dark-text mb-1">
               Product Name
             </label>
             <input
@@ -139,7 +139,7 @@ useEffect(() => {
 
           {/* Price */}
           <div>
-            <label className="block text-sm font-medium text-[#111111] mb-1">
+            <label className="block text-sm font-medium text-[#111111] mb-1 dark:text-dark-text">
               Price
             </label>
             <input
@@ -153,7 +153,7 @@ useEffect(() => {
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-[#111111] mb-1">
+            <label className="block text-sm font-medium text-[#111111] mb-1 dark:text-dark-text">
               Description
             </label>
             <textarea
@@ -167,7 +167,7 @@ useEffect(() => {
 
           {/* Photo URL */}
           <div>
-            <label className="block text-sm font-medium text-[#111111] mb-1">
+            <label className="block text-sm font-medium text-[#111111] mb-1 dark:text-dark-text">
               Photo URL
             </label>
             <input

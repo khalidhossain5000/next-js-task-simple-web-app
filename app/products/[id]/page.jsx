@@ -17,8 +17,8 @@ const page = ({ params }) => {
   }
   return (
   <div>
-    <div className="min-h-screen bg-[#EFEBE3] flex items-center justify-center p-6">
-  <div className="flex flex-col lg:flex-row gap-8 bg-white rounded-xl shadow-md p-8 max-w-6xl w-full">
+    <div className="min-h-screen bg-[#EFEBE3] flex items-center justify-center p-6 dark:bg-dark-secondary">
+  <div className="flex flex-col lg:flex-row gap-8 bg-white dark:bg-dark-primary rounded-xl shadow-md p-8 max-w-6xl w-full">
     {/* Product Image */}
     <div className="flex-1 flex justify-center items-center">
       <Image
@@ -33,18 +33,18 @@ const page = ({ params }) => {
     {/* Product Details */}
     <div className="flex-1 flex flex-col justify-center space-y-4">
       <div className="flex flex-col md:flex-row items-center gap-3">
-        <p className="text-[#111111] font-semibold">Name:</p>
-        <h1 className="text-xl font-bold text-[#111111]">{product.name}</h1>
+        <p className="text-[#111111] font-semibold dark:text-dark-text">Name:</p>
+        <h1 className="text-xl font-bold text-[#111111] dark:text-dark-text">{product.name}</h1>
       </div>
 
       <div>
-        <p className="text-[#111111] font-semibold">Price:</p>
+        <p className="text-[#111111] font-semibold dark:text-dark-text">Price:</p>
         <p className="text-xl font-semibold text-[#179800]">৳ {product.price}</p>
       </div>
 
       <div>
-        <p className="text-[#111111] font-semibold">Description:</p>
-        <p className="text-[#111111]">{product.description}</p>
+        <p className="text-[#111111] font-semibold dark:text-dark-text">Description:</p>
+        <p className="text-[#111111] dark:text-dark-text">{product.description}</p>
       </div>
     </div>
   </div>

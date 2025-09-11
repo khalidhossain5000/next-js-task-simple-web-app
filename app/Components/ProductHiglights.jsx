@@ -5,7 +5,7 @@ import products from "./productHighlightsData";
 import Link from "next/link";
 const ProductHiglights = () => {
   return (
-    <div className="bg-[#ffffff] py-12 lg:py-24">
+    <div className="bg-[#ffffff] dark:bg-dark-primary py-12 lg:py-24">
       <div className="container mx-auto px-3 lg:px-0">
         <h2 className="text-[#179800] text-xl md:text-2xl lg:text-[36px] text-center lg:text-left font-semibold py-6 md:py-12">
           Product Highlights
