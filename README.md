@@ -62,7 +62,7 @@ http://localhost:3000
 | `/api/products` | POST | Add new product to MongoDB | Yes |
 | `/api/auth/[...nextauth]` | All | NextAuth authentication routes | N/A |
 
-**Note:** Protected routes require users to be logged in. Unauthenticated users will be redirected to `/login` and after complete .
+**Note:** Protected routes require users to be logged in. Unauthenticated users will be redirected to `/login` .
 
 
 
